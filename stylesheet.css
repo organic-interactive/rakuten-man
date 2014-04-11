@@ -1,0 +1,47 @@
+@font-face {
+font-family: 'Dense-Regular';
+src:
+    local('Dense-Regular'),
+    local('Dense-Regular'),
+    url('Dense-Regular.otf');
+}
+
+h2 { 
+	position: absolute; 
+	top: 200px; 
+	left: 0; 
+	width: 100%; 
+}
+h2 span { 
+	color: white; 
+	font: bold 24px/45px Helvetica, Sans-Serif; 
+	letter-spacing: -1px;  
+	background: rgb(0, 0, 0); /* fallback color */
+	background: rgba(0, 0, 0, 0.7);
+	padding: 10px; 
+}
+h1 {
+	font-family: Dense-Regular;
+	font-weight: bold;
+	font-size: 45px;
+	padding-bottom: 10px;
+}
+.title {
+	margin-bottom: -30px;
+}
+.field-content{
+	/*overflow:hidden;
+	position: relative;*/
+	padding-top: 0px;
+	margin:10px;
+}
+.text-data{
+	padding-left: 5px;
+	font: bold 12px Helvetica, Sans-Serif;
+}
+
+.field-content img {
+	width:auto;
+	height:auto;
+	margin:-5px;
+}

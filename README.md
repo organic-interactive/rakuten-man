@@ -1,0 +1,1 @@
+Use by running rak-man.py SEARCH+TERM+WORDS PAGENUM and then opening the created out.html file in a browser.
