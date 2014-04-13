@@ -14,7 +14,7 @@ data = urllib.urlopen(site).read()
 regex = "<div class=\"b\-content b\-fix\-2lines\"><a href=\"(.+?)\">"
 regex2 = "<a href=\"/en/store/.+?/\"><img alt=\".+?\" src=\"(.+?)\" /></a>"
 regex3 = "USD<span class=\"b-text-prime\">(.+?)[<\.]"
-regex4 = "> Size </td>.+?</td>.+?<td valign=\"top\"> ?(.+?)<"
+regex4 = "> Size </td>.+?</td>.+?<td valign=\"top\"> ?(.+?)[<&]"
 regex5 = "Size:(.+?)[<\"]"
 regex6 = "> Size (\d+) <"
 regex7 = "variant-label-\d-\d\"> Size (\d+) <"
@@ -26,6 +26,10 @@ regex12 = " size: size (\d+) "
 regex13 = "sizes: (\d+) size"
 regex14 = "size </td>[\s\n]+<td .+?>(\d+)</td>"
 regex15 = "Size:\s*(\d+) "
+regex16 = "Size notation: </b></small></td>[\s\n]*<td><small>[\s\n]*<!--.+?--> (.+?)[\s\n]*<!--.+?--></small>"
+regex17 = "Size</td>[\s\n]*<td style=.+?>(.+?)<"
+regex18 = "Notation \((.+?)\)"
+regex19 = "Size\.? .+? (\w+?) "
 f = open("out.html", "w")
 images = re.findall(regex2, data)
 if len(images) == 0:
@@ -56,6 +60,10 @@ for link in links:
 	possibility9 = re.findall(regex13, data)
 	possibility10 = re.findall(regex14, data)
 	possibility11 = re.findall(regex15, data)
+	possibility12 = re.findall(regex16, data)
+	possibility13 = re.findall(regex17, data)
+	possibility14 = re.findall(regex18, data)
+	possibility15 = re.findall(regex19, data)
 	if len(possibility1) != 0:
 		sizes.append(possibility1[0].strip().upper())
 		continue
@@ -98,6 +106,18 @@ for link in links:
 		continue
 	if len(possibility10) != 0:
 		sizes.append(possibility10[0])
+		continue
+	if len(possibility12) != 0:
+		sizes.append(possibility12[0].upper())
+		continue
+	if len(possibility13) != 0:
+		sizes.append(possibility13[0])
+		continue
+	if len(possibility14) != 0:
+		sizes.append(possibility14[0].upper())
+		continue
+	if len(possibility15) != 0:
+		sizes.append(possibility15[0])
 		continue
 	sizes.append("UNKNOWN")
 print "%d/%d loaded." % (len(links), len(links))
